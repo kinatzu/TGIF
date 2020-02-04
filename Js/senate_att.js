@@ -47,7 +47,7 @@ function orderleastmissedVotes() {
         result += "<td class='party'>" + leastoftenvoteArray[i].missed_votes + "</td>";
         result += "<td class='state'>" + leastoftenvoteArray[i].missed_votes_pct + "</td>" + "</tr>";
     }
-    if ((window.location.pathname == "/house_att.html") || (window.location.pathname == "/senate_att.html")) {
+    if ((window.location.pathname.includes("/house_att.html")) || (window.location.pathname.includes("/senate_att.html"))) {
         document.getElementById("leastmissedvote").innerHTML = result;
     }
 }
