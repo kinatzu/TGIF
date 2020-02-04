@@ -16,7 +16,7 @@ $(document).ready(function () {
 //Bloque declarando todas las variables y datos necesarios
 const myMembers = data.results[0].members;
 let fieldsInserted = ["first_name", "party", "state", "seniority", "votes_with_party_pct"];
-let tBody = document.getElementById("houseData"); //Se incrustará en la id houseData de la tabla
+let tBody = document.getElementById("houseData"); //Se incrustará en la id houseData de la tabla (tbody)
 
 for (let i=0; i< myMembers.length; i++) {  // iniciamos 1er loop para coger todos los miembros
   let newTr = document.createElement("tr"); //crea variable nueva que crea el TR
@@ -30,7 +30,7 @@ for (let i=0; i< myMembers.length; i++) {  // iniciamos 1er loop para coger todo
         }
         newTd.classList.add('link') //crea dentro del TD una clase con el link para que no aparezca este a parte.
       }
-      if (j==0 && myMembers[i].middle_name != null) {
+      if (j==0 && myMembers[i].middle_name != null) {   //condicional para buscar si el congresista tiene middle_name. En caso de que este sea null, mostrará un espacio vacío.
         newTd.innerHTML = `${newTd.innerHTML} ${myMembers[i].middle_name} ${myMembers[i].last_name}`;
       } else if (j==0) {
         newTd.innerHTML = `${newTd.innerHTML} ${myMembers[i].last_name}`;

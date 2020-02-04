@@ -138,10 +138,10 @@ $(document).ready(function() {
               statistics.glance.pct_republicans_voted_with_party = media.toFixed(2);
               document.getElementById("repvotedparty").innerHTML = statistics.glance.pct_republicans_voted_with_party;
               break;
-          case "I":
-              statistics.glance.pct_independents_voted_with_party = media.toFixed(2);
-              document.getElementById("indvotedparty").innerHTML = statistics.glance.pct_independents_voted_with_party;
-              break;
+        //   case "I":
+        //       statistics.glance.pct_independents_voted_with_party = media.toFixed(2);
+        //       document.getElementById("indvotedparty").innerHTML = statistics.glance.pct_independents_voted_with_party;
+        //       break;
           case "Total":
               statistics.glance.pct_total_voted_with_party = media.toFixed(2);
               document.getElementById("totalvotedparty").innerHTML = statistics.glance.pct_total_voted_with_party;
