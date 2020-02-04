@@ -47,7 +47,7 @@ function orderleastmissedVotes() {
         result += "<td class='party'>" + leastoftenvoteArray[i].missed_votes + "</td>";
         result += "<td class='state'>" + leastoftenvoteArray[i].missed_votes_pct + "</td>" + "</tr>";
     }
-    if ((window.location.pathname == "/house_att.html") || (window.location.pathname == "/senate_att.html")) {
+    if ((window.location.pathname.includes("/house_att.html")) || (window.location.pathname.includes("/senate_att.html"))) {
         document.getElementById("leastmissedvote").innerHTML = result;
     }
 }
@@ -138,10 +138,6 @@ $(document).ready(function() {
               statistics.glance.pct_republicans_voted_with_party = media.toFixed(2);
               document.getElementById("repvotedparty").innerHTML = statistics.glance.pct_republicans_voted_with_party;
               break;
-        //   case "I":
-        //       statistics.glance.pct_independents_voted_with_party = media.toFixed(2);
-        //       document.getElementById("indvotedparty").innerHTML = statistics.glance.pct_independents_voted_with_party;
-        //       break;
           case "Total":
               statistics.glance.pct_total_voted_with_party = media.toFixed(2);
               document.getElementById("totalvotedparty").innerHTML = statistics.glance.pct_total_voted_with_party;
