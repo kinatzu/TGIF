@@ -1,0 +1,131 @@
+<html lang="en">
+<!DOCTYPE html>    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./styles/css.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <title>House</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/css.css">
+    
+   
+</head>
+<body>
+    <header>
+        <img src="./media/eagle2.png" alt="TGIF" width="180" height="180">
+        <div class="headertitle"><h1>TRANSPARENT</h1>
+        <h1>GOVERNMENT</h1>
+        <h1>IN FACT</h1>
+      </div>
+      <div class="emailinfo">
+      <h2><span class="glyphicon glyphicon-send" aria-hidden="true"></span><a class="email" href="https://www.gmail.com"> info@tgif.net</a></h2>
+      </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="homet" href="index.html">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" >Congress 113</a>
+          <div class="dropdown-menu" style="">
+            <a class="dropdown-item" href="house.html">House</a>
+            <a class="dropdown-item" href="senate.html">Senate</a>
+            <div class="dropdown-divider"></div>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Attendance</a>
+          <div class="dropdown-menu" style="">
+            <a class="dropdown-item" href="house_att.html">House</a>
+            <a class="dropdown-item" href="senate_att.html">Senate</a>
+            <div class="dropdown-divider"></div>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a  class="nav-link active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Party Loyalty</a>
+          <div class="dropdown-menu" style="">
+            <a class="dropdown-item" href="house_loyal.html">House</a>
+            <a class="dropdown-item" href="senate_loyal.html">Senate</a>
+            <div class="dropdown-divider"></div>
+          </div>
+        </li>
+      </ul>
+      </nav>
+      <h1 class="attitle">PARTY LOYALTY</h1>
+      <div class="attendancebox">
+        <div class="attcontent">
+        <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda.</p>
+        </div>
+        <div class="glance">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary"><h1 class="glancetitle">House at a glance</h1></nav>
+        <div class="tableatt">
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-light">
+                <th scope="col">Party</th>
+                <th scope="col">Nº of Reps</th>
+                <th scope="col">% Voted w/ Party</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td>Republican</td>
+                  <td id="repnumrep"></td>
+                  <td id="repvotedparty"></td>
+              </tr>
+              <tr>
+                  <td>Democrat</td>
+                  <td id="demnumrep"></td>
+                  <td id="demvotedparty"></td>
+              </tr>
+              <tr>
+                  <td>Total</td>
+                  <td id="totalnumrep"></td>
+                  <td>91.52</td<>
+              </tr>
+          </tbody>
+        </table>
+       </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary"><h1 class="glancetitle">Least Engaged (Bottom 10% Party)</h1></nav>
+        <!-- <div class="tableatt"> -->
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-light">
+                <th scope="col">Name</th>
+                <th scope="col">Nº Of Party Votes</th>
+                <th scope="col">% Party Votes</th>
+              </tr>
+            </thead>
+            <tbody id="leastpartyvote">
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-6">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary"><h1 class="glancetitle">Most Engaged (Top 10% Party)</h1></nav>
+        <!-- <div class="tableatt"> -->
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-light">
+                <th scope="col">Name</th>
+                <th scope="col">Nº Of Party Votes</th>
+                <th scope="col">% Party Votes</th>
+              </tr>
+            </thead>
+            <tbody id="mostpartyvote">
+          </tbody>
+        </table>
+      </div>
+</body>          
+
+<script src="./Js/pro-congress-113-house.js"></script>
+<script src="./Js/house_loyal.js"></script>

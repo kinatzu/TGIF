@@ -1,0 +1,138 @@
+<html lang="en">
+<!DOCTYPE html>    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./styles/css.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <title>House</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="styles/css.css">
+    
+   
+</head>
+<body>
+    <header>
+        <img src="./media/eagle2.png" alt="TGIF" width="180" height="180">
+        <div class="headertitle"><h1>TRANSPARENT</h1>
+        <h1>GOVERNMENT</h1>
+        <h1>IN FACT</h1>
+      </div>
+      <div class="emailinfo">
+      <h2><span class="glyphicon glyphicon-send" aria-hidden="true"></span><a class="email" href="https://www.gmail.com"> info@tgif.net</a></h2>
+      </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="homet" href="index.html">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" >Congress 113</a>
+          <div class="dropdown-menu" style="">
+            <a class="dropdown-item" href="house.html">House</a>
+            <a class="dropdown-item" href="senate.html">Senate</a>
+            <div class="dropdown-divider"></div>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a  class="nav-link active"data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Attendance</a>
+          <div class="dropdown-menu" style="">
+            <a class="dropdown-item" href="house_att.html">House</a>
+            <a class="dropdown-item" href="senate_att.html">Senate</a>
+            <div class="dropdown-divider"></div>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Party Loyalty</a>
+          <div class="dropdown-menu" style="">
+            <a class="dropdown-item" href="house_loyal.html">House</a>
+            <a class="dropdown-item" href="senate_loyal.html">Senate</a>
+            <div class="dropdown-divider"></div>
+          </div>
+        </li>
+      </ul>
+      </nav>
+      <h1 class="attitle">ATTENDANCE</h1>
+      <div class="attendancebox">
+        <div class="attcontent">
+        <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
+          <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
+        </div>
+        <div class="glance">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary"><h1 class="glancetitle">Senate at a glance</h1></nav>
+        <div class="tableatt">
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-light">
+                <th scope="col">Party</th>
+                <th scope="col">Nº of Reps</th>
+                <th scope="col">% Voted w/ Party</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td>Republican</td>
+                  <td id="repnumrep"></td>
+                  <td id="repvotedparty"></td>
+              </tr>
+              <tr>
+                  <td>Democrat</td>
+                  <td id="demnumrep"></td>
+                  <td id="demvotedparty"></td>
+              </tr>
+              <tr>
+                  <td>Independent</td>
+                  <td id="indnumrep"></td>
+                  <td id="indvotedparty"></td>
+              </tr>
+              <tr>
+                  <td>Total</td>
+                  <td id="totalnumrep"></td>
+                  <td id="totalvotedparty"></td>
+              </tr>
+          </tbody>
+        </table>
+       </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary"><h1 class="glancetitle">Least Engaged (Bottom 10% Attendance)</h1></nav>
+          <table id="example" class="table table-hover">
+            <thead>
+              <tr class="table-light">
+                <th scope="col">Name</th>
+                <th scope="col">Nº Of Missed Votes</th>
+                <th scope="col">% Missed</th>
+              </tr>
+            </thead>
+            <tbody id="leastmissedvote">
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-6">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary"><h1 class="glancetitle">Most Engaged (Top 10% Attendance)</h1></nav>
+          <table id="example2" class="table table-hover">
+            <thead>
+              <tr class="table-light">
+                <th scope="col">Name</th>
+                <th scope="col">Nº Of Missed Votes</th>
+                <th scope="col">% Missed</th>
+              </tr>
+            </thead>
+            <tbody id="mostmissedvote">
+          </tbody>
+        </table>
+      </div>
+</body>     
+
+<script src="./Js/pro-congress-113-senate.js"></script>
+<script src="./Js/senate_att.js"></script>

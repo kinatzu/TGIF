@@ -1,0 +1,178 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    margin: 60px 180px 70px 180px;
+    line-height: 25px;
+    font-size: 15px;
+}
+
+header{
+    display: flex;
+    padding-bottom: 50px;
+    align-items: center;
+    
+}
+.headertitle{
+    padding-left: 20px;
+}
+.email{
+    color: #28558098;
+}
+.emailinfo a:hover{
+    color: #F0C419;
+}
+.emailinfo{
+    padding-left: 920px;
+    padding-bottom: 100px;
+}
+h1{
+    font-size: 35px;
+}
+a{
+    color: white;
+}
+.aboutbox{
+    padding-right: 60px;
+}
+#collapse{
+    margin-top: 1px;
+}
+.abouttitle{
+    color: white;
+    font-size: 20px !important;
+}
+.indexcontainer{
+    display: flex;
+    justify-content: center;
+}
+.whitehouse{
+    border-style: dotted;
+    border-right: #28558049;
+    border-left: #a02e2e;
+    border-width: 20;
+    border-color: rgba(84, 120, 154, 0.13);
+    padding: 30px 0px 50px 0px;
+}
+.subwhitehouse{
+    padding-top: 20px;
+    font-size: 25px;
+    text-align: center;
+}
+.nav-toggle{
+    text-decoration: none !important;
+}
+.aboutcontainer{
+    margin-bottom: 10px;
+}
+a:hover{
+    color: #F0C419;
+}
+.tablehouse{
+    padding-top: 30px;
+}
+.attendancebox{
+    display:flex;
+    padding-bottom: 60px;
+}
+.attcontent{
+    width: 50%;
+    padding-right: 25px;
+    font-size: 16px;
+    color: black;
+    word-spacing:3px;
+}
+.table thead th {
+    height: 47px;
+    color: black;
+    font-weight: bold;
+    background-color:rgba(84, 120, 154, 0.178)   ;
+}
+li{
+    font-size: 17px;
+}
+.navbar{
+    margin-bottom: 18px;
+    margin-top: 10px;
+}
+.housebox{
+    padding-top: 30px; 
+}
+.nav-toggle{
+    color: White;
+    font-size: 20px;
+}
+.dropdown-item{
+    font-size: 17px;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #285680;
+}
+.bg-primary {
+    background-color: #285580cb !important;
+}
+.phome{
+    border-style: solid;
+    border-radius: 7px;
+    border-width: 1;
+    border-color: #28558054;
+    padding: 15px 15px 15px 15px;
+    font-size: 16px;
+    color: black;
+    word-spacing:3px;
+}
+.glance{
+    width: 50%;
+    padding-left: 16px;
+}
+.attitle{
+    padding-top: 35px;
+}
+.glancetitle{
+    font-size: 20px;
+    color: white;
+    padding-bottom: 2;
+
+}
+.congressbox, .senatorsbox{
+    font-size: 16px;
+    color: black;
+    padding-top: 30px;
+    word-spacing:3px;
+}
+.congresstitle, .senatetitle{
+    padding-bottom: 5px;
+}
+footer{
+    align-items: center;
+    padding-top: 60px;
+}
+.downtables{
+    display: inline-flex;
+    width: 100%;
+}
+.left-table{
+    width: 40%;
+    display: inline;
+}
+.dataTables_wrapper, .dataTables_filter input {
+    margin-left: 0.5em;
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    box-shadow: none;
+}
+select {
+    word-wrap: normal;
+    border-radius: 7px;
+}
+.link {
+    color: #54789A;
+    cursor: hand;
+}
+a{
+    color: #54789A;
+    cursor: hand; 
+}
+.nav-item, .nav-link, .homet {
+    color: white !important;
+}

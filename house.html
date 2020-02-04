@@ -1,0 +1,93 @@
+<html lang="en">
+<!DOCTYPE html>    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./styles/css.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <title>House</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/css.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    
+   
+</head>
+<body>
+    <header>
+        <img src="./media/eagle2.png" alt="TGIF" width="180" height="180">
+        <div class="headertitle"><h1>TRANSPARENT</h1>
+        <h1>GOVERNMENT</h1>
+        <h1>IN FACT</h1>
+      </div>
+      <div class="emailinfo">
+      <h2><span class="glyphicon glyphicon-send" aria-hidden="true"></span><a class="email" href="https://www.gmail.com"> info@tgif.net</a></h2>
+      </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="homet" href="index.html">Home</a c>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" >Congress 113</a>
+          <div class="dropdown-menu" style="">
+            <a class="dropdown-item" href="house.html">House</a>
+            <a class="dropdown-item" href="senate.html">Senate</a>
+            <div class="dropdown-divider"></div>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Attendance</a>
+          <div class="dropdown-menu" style="">
+            <a class="dropdown-item" href="house_att.html">House</a>
+            <a class="dropdown-item" href="senate_att.html">Senate</a>
+            <div class="dropdown-divider"></div>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Party Loyalty</a>
+          <div class="dropdown-menu" style="">
+            <a class="dropdown-item" href="house_loyal.html">House</a>
+            <a class="dropdown-item" href="senate_loyal.html">Senate</a>
+            <div class="dropdown-divider"></div>
+          </div>
+        </li>
+      </ul>
+      </nav>
+
+      <div class="congressbox">
+        <h1 class="congresstitle">CONGRESSMEN</h1>
+        <p>The major power of the House is to pass federal legislation that affects the entire country, although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no majority in the Electoral College.</p>
+
+        <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative.</p>
+        </div>
+      
+        <div class="tablehouse">
+          <table id="example" class="table table-hover" style="width:100%">
+            <thead>
+              <tr class="table-light">
+                <th scope="col">Congressman</th>
+                <th scope="col">Party Affiliation</th>
+                <th scope="col">State</th>
+                <th scope="col">Years in Office</th>
+                <th scope="col">% Votes w/Party</th>
+              </tr>
+            </thead>
+            <tbody id="houseData">
+
+
+
+          </tbody>
+        </table>
+      </div>
+      <footer><nav class="navbar navbar-expand-lg navbar-dark bg-primary">© TGIF 2018 | All rights Reserved</nav></footer>
+</body>      
+
+<script src="./Js/pro-congress-113-house.js"></script>
+<script src="./Js/JS.js"></script>
