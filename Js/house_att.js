@@ -1,4 +1,4 @@
-var statistics = {
+var statistics = {                                   //Estadísticas tomadas para las tablas.
     glance: {
         "number_democrats_reps": 0,
         "number_republicans_reps": 0,
@@ -28,7 +28,7 @@ var totalvotesArray = [];
 
 function orderleastmissedVotes() {
     array.sort(function (a, b) {        //.sort en una función sirve para comparar valores
-        return b.missed_votes_pct - a.missed_votes_pct;
+        return b.missed_votes_pct - a.missed_votes_pct;      //devuelve % de votos perdidos - % de votos perdidos para sacar un total
     });
     for (var i = 0; i < array.length; i++) {
         if (leastoftenvoteArray.length < (array.length * 0.1) || leastoftenvoteArray[leastoftenvoteArray.length - 1].missed_votes_pct == array[i].missed_votes_pct) {
@@ -97,16 +97,16 @@ $(document).ready(function() {
   calcVotes(array, totalvotesArray, "Total")
    
    
-  function fillPartyArray(partyValue, targetArray) {
+  function fillPartyArray(partyValue, targetArray) {  //Función para el nº de representantes
       for (var i = 0; i < array.length; i++) {
-          if (array[i].party == partyValue) {
-              targetArray.push(array[i]);
+          if (array[i].party == partyValue) {      //comparamos si el Partido del miembro es igual al valor en base al siguiente switch
+              targetArray.push(array[i]);          // Hacemos push para insertar el valor.
           }
       }
-      switch (partyValue) {
-          case "D":
-              statistics.glance.number_democrats_reps = JSON.stringify(targetArray.length);
-              document.getElementById("demnumrep").innerHTML = statistics.glance.number_democrats_reps;
+      switch (partyValue) {                        //Iniciamos switch para agregar condicionales
+          case "D":                  // caso D (Democrat)
+              statistics.glance.number_democrats_reps = JSON.stringify(targetArray.length); // Si el numero de demócratas = JSON.stringfy de la longitud del targetArray ---->
+              document.getElementById("demnumrep").innerHTML = statistics.glance.number_democrats_reps; //inserta (getElement...) en el HTML (innerHTML) el total de demócratas con la id "demnumrep"
               calcVotes(targetArray, democratvotesArray, "D");
               break;
           case "R":
@@ -119,7 +119,7 @@ $(document).ready(function() {
       document.getElementById("totalnumrep").innerHTML = array.length;
   }
    
-  function calcVotes(targetArray, averageArray, partyValue) {
+  function calcVotes(targetArray, averageArray, partyValue) {             //función cálculo de Votos totales
       for (var i = 0; i < targetArray.length; i++) {
           averageArray.push(JSON.parse(targetArray[i].votes_with_party_pct));
       }
