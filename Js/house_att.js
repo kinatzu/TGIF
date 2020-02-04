@@ -94,7 +94,6 @@ $(document).ready(function() {
   //Encotnrar % congresistas
   fillPartyArray("D", democratArray);
   fillPartyArray("R", republicanArray);
-  fillPartyArray("I", independentArray);
   calcVotes(array, totalvotesArray, "Total")
    
    
@@ -114,11 +113,6 @@ $(document).ready(function() {
               statistics.glance.number_republicans_reps = JSON.stringify(targetArray.length);
               document.getElementById("repnumrep").innerHTML = statistics.glance.number_republicans_reps;
               calcVotes(targetArray, republicanvotesArray, "R");
-              break;
-          case "I":
-              statistics.glance.number_independents_reps = JSON.stringify(targetArray.length);
-              document.getElementById("indnumrep").innerHTML = statistics.glance.number_independents_reps;
-              calcVotes(targetArray, independentvotesArray, "I");
               break;
       }
       statistics.glance.number_total_reps = JSON.stringify(array.length);

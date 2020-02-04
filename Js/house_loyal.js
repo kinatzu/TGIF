@@ -24,10 +24,10 @@ var independentArray = [];
 var independentvotesArray = [];
 var totalvotesArray = [];
 
-  //Encotnrar % congresistas
+  //Encontrar % congresistas
   fillPartyArray("D", democratArray);
   fillPartyArray("R", republicanArray);
-  fillPartyArray("I", independentArray);
+  fillPartyArray("I", independentArray)S;
   calcVotes(array, totalvotesArray, "Total")
    
    
