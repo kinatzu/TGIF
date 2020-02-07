@@ -138,6 +138,7 @@ li{
     color: black;
     padding-top: 30px;
     word-spacing:3px;
+    padding-bottom: 30px;
 }
 .congresstitle, .senatetitle{
     padding-bottom: 5px;
@@ -195,11 +196,14 @@ a{
 }
 
 .d-flex{
-    background-color: #DBE2E9;
+    /* background-color: rgba(219, 226, 233, 0.5); */
     height: 50px;
     color: black;
     border-radius: 5px;
-    padding-top: 14px;
+    border-style: solid;
+    padding-top: 13px;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.26);
     padding-left: 15px;
     padding-right: 15px;
     font-size: 17px;

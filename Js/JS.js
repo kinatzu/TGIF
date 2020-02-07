@@ -14,10 +14,11 @@ $(document).ready(function () {
 });
 
 //Bloque declarando todas las variables y datos necesarios
-const myMembers = data.results[0].members;
+var myMembers = data.results[0].members;
 let fieldsInserted = ["first_name", "party", "state", "seniority", "votes_with_party_pct"];
 let tBody = document.getElementById("houseData"); //Se incrustará en la id houseData de la tabla (tbody)
 
+function createTable() {
 for (let i=0; i< myMembers.length; i++) {  // iniciamos 1er loop para coger todos los miembros
   let newTr = document.createElement("tr"); //crea variable nueva que crea el TR
     for  (let j=0; j< fieldsInserted.length; j++) { //Loop para coger todos los datos necesarios de cada miembro
@@ -39,6 +40,8 @@ for (let i=0; i< myMembers.length; i++) {  // iniciamos 1er loop para coger todo
     }
   tBody.appendChild(newTr); //añade el TR al Tbody (tabla) Los appendChild son necesarios para mostrar los valores en el HTML
 }
+}
+createTable();
 
 
 //Filtros Tablas
@@ -47,3 +50,76 @@ $(document).ready(function() {
 } );
 
 
+
+function canISeeTheMember(myMembers){
+    
+  var partyFilter = false;
+  var stateFilter = false;
+  
+  //We store the values of the checkboxes that are checked i.e ["R", "D"]
+  var arrayOfCheckedCheckboxes = [];
+  
+  //We populate the array with an R if the Rep Cb is checked
+  if(document.getElementById("R").checked){
+      arrayOfCheckedCheckboxes.push("R");
+  }
+  
+  if(document.getElementById("D").checked){
+      arrayOfCheckedCheckboxes.push("D");
+  }
+  
+  if(document.getElementById("I").checked){
+      arrayOfCheckedCheckboxes.push("I");
+  }
+  for (let i = 0; i < myMembers.length; i++){
+  if(arrayOfCheckedCheckboxes.includes(myMembers.party) || arrayOfCheckedCheckboxes.length == 0){
+      partyFilter = true;
+  }
+
+  
+  if(document.getElementById("stateSelect").value == myMembers.state || document.getElementById("stateSelect").value == "all"){
+      stateFilter = true;
+  
+}
+  
+  
+  return partyFilter && stateFilter;
+
+}
+}
+
+document.getElementById("R").addEventListener("click", function () {
+  createTable(myMembers);
+})
+
+document.getElementById("D").addEventListener("click", function () {
+   createTable();
+})
+
+document.getElementById("I").addEventListener("click", function () {
+   createTable();
+})
+
+document.getElementById("stateSelect").addEventListener("change", function () {
+   createTable();
+})
+  
+
+
+
+
+
+
+$(document).ready(function(){ 
+//    $(window).scroll(function(){ 
+//        if ($(this).scrollTop() > 100) { 
+//            $('#scroll').fadeIn(1000); 
+//        } else { 
+//            $('#scroll').fadeOut(1000); 
+//        } 
+//    }); 
+  $('#scroll').click(function(){ 
+      $("html, body").animate({ scrollTop: 0 }, 600); 
+      return false; 
+  }); 
+});
