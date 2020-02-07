@@ -176,3 +176,34 @@ a{
 .nav-item, .nav-link, .homet {
     color: white !important;
 }
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: #285680 !important; 
+    border-color: #337ab7;
+}
+.checkboxes{
+    background-color: #54789A;
+    color: White;
+    height: 50px;
+    border-radius: 5px;
+    padding-top: 13px;
+    padding-left: 15px;
+}
+.custom-control-label{
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.d-flex{
+    background-color: #54789A;
+    height: 50px;
+    color: white;
+    border-radius: 5px;
+    padding-top: 14px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 17px;
+}
+#stateSelect{
+    color: black;
+}

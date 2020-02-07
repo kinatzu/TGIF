@@ -1,4 +1,4 @@
-var statistics = {                                   //Estadísticas tomadas para las tablas.
+var statistics = {         //Creación de objeto para estadísticas tabla glance. Numeramos a 0 todas las categorías que posteriormente serán modificadas por los valores obtenidos
     glance: {
         "number_democrats_reps": 0,
         "number_republicans_reps": 0,
@@ -11,8 +11,8 @@ var statistics = {                                   //Estadísticas tomadas par
     }
 }
  
-var array = (data.results[0].members);
-var leastoftenvoteArray = [];
+var array = (data.results[0].members);   //Obtención de todos los miembros del JSON
+var leastoftenvoteArray = []; //'Contenedores' para almacenar datos mediante push obtenidos en función. 
 var mostoftenvoteArray = [];
 var mostpartyvoteArray = [];
 var leastpartyvoteArray = [];
@@ -27,12 +27,12 @@ var totalvotesArray = [];
 // 10% mas bajo de missed votes
 
 function orderleastmissedVotes() {
-    array.sort(function (a, b) {        //.sort en una función sirve para comparar valores
-        return b.missed_votes_pct - a.missed_votes_pct;      //devuelve % de votos perdidos - % de votos perdidos para sacar un total
+    array.sort(function (a, b) {        //.sort en en función para COMPARAR valores y ordenarlos
+        return b.missed_votes_pct - a.missed_votes_pct;      //Comparación de ambas muestras restando los valores A y B
     });
-    for (var i = 0; i < array.length; i++) {
-        if (leastoftenvoteArray.length < (array.length * 0.1) || leastoftenvoteArray[leastoftenvoteArray.length - 1].missed_votes_pct == array[i].missed_votes_pct) {
-            leastoftenvoteArray.push(array[i]);
+    for (var i = 0; i < array.length; i++) { //LOOP de TODOS los miembros del JSON
+        if (leastoftenvoteArray.length < (array.length * 0.1) || leastoftenvoteArray[leastoftenvoteArray.length - 1].missed_votes_pct == array[i].missed_votes_pct) { //Multiplicamos la longitud del array por 0.1 para obtener solo el 10% del total del array. 
+            leastoftenvoteArray.push(array[i]);      //Push a la variable contenedor con los datos obtenidos leastoftenvoteArray
         }
     }
     var result = "",
@@ -51,12 +51,12 @@ function orderleastmissedVotes() {
         document.getElementById("leastmissedvote").innerHTML = result;
     }
 }
-orderleastmissedVotes();
+orderleastmissedVotes(); //Ejecución
 
 // 10% mas alto de missed votes
  
 function ordermostmissedVotes() {
-    array.sort(function (a, b) {
+    array.sort(function (a, b) {             //COMPARATIVA DE NUEVO
         return a.missed_votes_pct - b.missed_votes_pct;
     });
     for (var i = 0; i < array.length; i++) {
@@ -64,6 +64,8 @@ function ordermostmissedVotes() {
             mostoftenvoteArray.push(array[i]);
         }
     }
+
+    //if: Si, longitud de mayores votados es menor al total de miembros * 0.1 O mayores votados[con longitud -1 para comparar valores].(para entrar en el atributo del objeto de missed votes) SEA IGUAL al array[i].% de votos perdidos
  
     var result = "",
         y = null,
@@ -82,15 +84,7 @@ function ordermostmissedVotes() {
     }
 }
 ordermostmissedVotes();
- 
-$(document).ready(function() {
-    $('#example').DataTable();
-  } );
-  
-  $(document).ready(function() {
-    $('#example2').DataTable();
-  } );
-  
+
   //Encotnrar % congresistas
   fillPartyArray("D", democratArray);
   fillPartyArray("R", republicanArray);
@@ -145,6 +139,11 @@ $(document).ready(function() {
       }
   }
 
-
-
-
+  $(document).ready(function() {
+    $('#example').DataTable();
+  } );
+  
+  $(document).ready(function() {
+    $('#example2').DataTable();
+  } );
+  

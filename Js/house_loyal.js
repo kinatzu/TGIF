@@ -99,7 +99,7 @@ function orderleastpartyVotes() {
             result += "<tr>" + "<td>" + '<a href="' + leastpartyvoteArray[i].url + '">' + leastpartyvoteArray[i].first_name + ' ' + leastpartyvoteArray[i].middle_name + ' ' + leastpartyvoteArray[i].last_name + "</a>" + "</td>";
         }
         result += "<td class='party'>" + (leastpartyvoteArray[i].total_votes - leastpartyvoteArray[i].missed_votes) + "</td>";
-        result += "<td class='state'>" + leastpartyvoteArray[i].votes_with_party_pct + " %" + "</td>" + "</tr>";
+        result += "<td class='state'>" + leastpartyvoteArray[i].votes_with_party_pct + "</td>" + "</tr>";
     }
     if ((window.location.pathname.includes("/senate_loyal.html")) || (window.location.pathname.includes("/house_loyal.html"))) {
         document.getElementById("leastpartyvote").innerHTML = result;
@@ -128,7 +128,7 @@ function ordermostpartyVotes() {
             result += "<tr>" + "<td>" + '<a href="' + mostpartyvoteArray[i].url + '">' + mostpartyvoteArray[i].first_name + ' ' + mostpartyvoteArray[i].middle_name + ' ' + mostpartyvoteArray[i].last_name + "</a>" + "</td>";
         }
         result += "<td class='party'>" + (mostpartyvoteArray[i].total_votes - mostpartyvoteArray[i].missed_votes) + "</td>";
-        result += "<td class='state'>" + mostpartyvoteArray[i].votes_with_party_pct + " %" + "</td>" + "</tr>";
+        result += "<td class='state'>" + mostpartyvoteArray[i].votes_with_party_pct + "</td>" + "</tr>";    //si añadimos % entre el votes_with_party_pct y el td añadimos %  los resultados
     }
     if ((window.location.pathname.includes("/senate_loyal.html")) || (window.location.pathname.includes("/house_loyal.html"))) {
         document.getElementById("mostpartyvote").innerHTML = result;

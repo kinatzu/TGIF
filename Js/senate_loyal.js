@@ -30,7 +30,6 @@ fillPartyArray("R", republicanArray);
 fillPartyArray("I", independentArray);
 calcVotes(array, totalvotesArray, "Total")
  
- 
 function fillPartyArray(partyValue, targetArray) {
     for (var i = 0; i < array.length; i++) {
         if (array[i].party == partyValue) {
@@ -53,10 +52,12 @@ function fillPartyArray(partyValue, targetArray) {
             document.getElementById("indnumrep").innerHTML = statistics.glance.number_independents_reps;
             calcVotes(targetArray, independentvotesArray, "I");
             break;
+            
     }
     statistics.glance.number_total_reps = JSON.stringify(array.length);
     document.getElementById("totalnumrep").innerHTML = array.length;
 }
+
  
 function calcVotes(targetArray, averageArray, partyValue) {
     for (var i = 0; i < targetArray.length; i++) {
