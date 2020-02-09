@@ -3,6 +3,8 @@ body{
     margin: 60px 180px 70px 180px;
     line-height: 25px;
     font-size: 15px;
+    background-image: url(/media/dot-grid.png);
+    background-size: 300px;
 }
 
 header{
@@ -44,14 +46,14 @@ a{
     display: flex;
     justify-content: center;
 }
-.whitehouse{
+/* .whitehouse{
     border-style: dotted;
     border-right: #28558049;
     border-left: #a02e2e;
     border-width: 20;
     border-color: rgba(84, 120, 154, 0.13);
     padding: 30px 0px 50px 0px;
-}
+} */
 .subwhitehouse{
     padding-top: 20px;
     font-size: 25px;
@@ -119,6 +121,7 @@ li{
     font-size: 16px;
     color: black;
     word-spacing:3px;
+    background-color: white;
 }
 .glance{
     width: 50%;
