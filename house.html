@@ -21,7 +21,7 @@
 </head>
 <body>
     <header>
-        <a href="index.html"><img src="./media/eagle2.png" alt="TGIF" width="180" height="180">
+        <a href="index.html"><img src="./media/eagle2.png" alt="TGIF" width="180" height="180"></a>
         <div class="headertitle"><h1>TRANSPARENT</h1>
         <h1>GOVERNMENT</h1>
         <h1>IN FACT</h1>
@@ -72,16 +72,18 @@
         <div id="filters" class="d-flex justify-content-between">
 
           <div>
-              <span class="filtertitle">Filter by Party:</span>
-              <input type="checkbox" name="filter" value="R" id="R" unchecked> Republican
-              <input type="checkbox" name="filter" value="D" id="D" unchecked> Democrat
-              <input type="checkbox" name="filter" value="I" id="I" unchecked> Independent
-          </div>
+            <span class="filtertitle">Filter by Party:</span>
+            <span class="filterbox">
+            <label class="labelfilter"><input type="checkbox" name="filter" value="R" id="R" unchecked> Republican</label>
+            <label class="labelfilter"><input type="checkbox" name="filter" value="D" id="D" unchecked> Democrat</label>
+            <label class="labelfilter"><input type="checkbox" name="filter" value="I" id="I" unchecked> Independent</label></span>
+        </div>
 
           <div>
             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
               <span class="filtertitle">Filter by State:</span>
               <select name="state" id="stateSelect">
+                <option value="all">All States</option>
               </select>
           </div>
 
