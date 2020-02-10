@@ -62,7 +62,7 @@ function createTable(members, filter1) {
     }
   }
   if (filter1 == 0) {
-    window.alert("Ooops! No results found for your criteria.\nPlease change your selection.")
+    alert("Ooops! No results found for your criteria.\nPlease change your selection.")
     // document.getElementById('houseData2').innerHTML = "Ooops! No results found for your criteria.";
   }
 }
