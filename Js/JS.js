@@ -13,10 +13,10 @@ $(document).ready(function () {
 
 });
 
-const houseMembers = data.results[0].members;
+const hMembers = data.results[0].members;
 
 //Datos a mostrar en la tabla
-createTable(houseMembers, ["D", "R", "I"]);
+createTable(hMembers, ["D", "R", "I"]);
 
 //Evenlistener checkboxes
 let checkBoxGroup = document.getElementsByName("filter");
@@ -24,28 +24,28 @@ checkBoxGroup.forEach(checkbox => checkbox.addEventListener("click", () => filte
 
 function filters() {
   let checkBoxFilters = Array.from(document.querySelectorAll('input[name=filter]:checked')).map(array => array.value);
-  createTable(houseMembers, checkBoxFilters)
+  createTable(hMembers, checkBoxFilters)
 }
 
 
-//Creación tabla con miembros
+//Creación tabla con miembros y filtro
 function createTable(members, filter1) {
   houseData.innerHTML = "";
 
-  let newBody = document.getElementById("houseData");
-  let fieldsInserted = ["first_name", "party", "state", "seniority", "votes_with_party_pct"];
+  let tableBody = document.getElementById("houseData");
+  let membersinfo = ["first_name", "party", "state", "seniority", "votes_with_party_pct"];
 
   for (let i = 0; i < members.length; i++) {
     if (filter1.includes(members[i].party) || filter1.length < 1) {
       let newTr = document.createElement("tr");
-      for (let j = 0; j < fieldsInserted.length; j++) {
-        let dataInserted = fieldsInserted[j];
+      for (let j = 0; j < membersinfo.length; j++) {
+        let insertInfo = membersinfo[j];
         let newTd = document.createElement("td");
         if (j == 0) {
           let newAnchorTag = document.createElement("a");
           newAnchorTag.setAttribute("href", members[i].url);
           newAnchorTag.setAttribute("target", "_blank");
-          newAnchorTag.innerHTML = members[i][dataInserted];
+          newAnchorTag.innerHTML = members[i][insertInfo];
           if (j == 0 && members[i].middle_name != null) {
             fullname = newAnchorTag.innerHTML = `${newAnchorTag.innerHTML} ${members[i].middle_name} ${members[i].last_name}`;
           } else {
@@ -53,11 +53,11 @@ function createTable(members, filter1) {
           }
           newTd.appendChild(newAnchorTag);
         } else {
-          newTd.innerHTML = members[i][dataInserted];
+          newTd.innerHTML = members[i][insertInfo];
         }
         newTr.appendChild(newTd);
       }
-      newBody.appendChild(newTr);
+      tableBody.appendChild(newTr);
     }
   }
 }

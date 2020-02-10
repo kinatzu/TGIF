@@ -26,7 +26,7 @@
         <h1>IN FACT</h1>
     </div>
     <div class="emailinfo">
-    <h2><span class="glyphicon glyphicon-send" aria-hidden="true"></span><a class="email" href="https://www.gmail.com"> info@tgif.net</a></h2>
+    <h4><span class="glyphicon glyphicon-send" aria-hidden="true"></span><a class="email" href="https://www.gmail.com"> info@tgif.net</a></h2>
     </div>
     </header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -65,17 +65,18 @@
         <h1 class="senatetitle">SENATORS</h1>
         <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
         </div>
-<div id="filters" class="d-flex justify-content-between">
+        <div id="filters" class="d-flex justify-content-between">
 
           <div>
-              Filter by Party:
-              <input type="checkbox" name="politic" value="R" id="R"> Republican
-              <input type="checkbox" name="politic" value="D" id="D"> Democrat
-              <input type="checkbox" name="politic" value="I" id="I"> Independent
+              <span class="filtertitle">Filter by Party:</span>
+              <input type="checkbox" name="filter" value="R" id="R" unchecked> Republican
+              <input type="checkbox" name="filter" value="D" id="D" unchecked> Democrat
+              <input type="checkbox" name="filter" value="I" id="I" unchecked> Independent
           </div>
 
           <div>
-              <span>Filter by State:</span>
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <span class="filtertitle">Filter by State:</span>
               <select name="state" id="stateSelect">
                   <option value="all">All States</option>
                   <option value="AL">Alabama</option>
