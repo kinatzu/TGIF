@@ -14,6 +14,7 @@ $(document).ready(function () {
 });
 
 const hMembers = data.results[0].members;
+let noResults = document.querySelector("noResultsWarning");
 
 //Datos a mostrar en la tabla
 createTable(hMembers, ["D", "R", "I"]);
@@ -43,8 +44,8 @@ function createTable(members, filter1) {
         let newTd = document.createElement("td");
         if (j == 0) {
           let newAnchorTag = document.createElement("a");
-          newAnchorTag.setAttribute("href", members[i].url);
-          newAnchorTag.setAttribute("target", "_blank");
+          newAnchorTag.setAttribute("href", members[i].url); //Crea atributo (link) dentro de <a>
+          newAnchorTag.setAttribute("target", "_blank"); //Ejecutar link en pestaña adicional
           newAnchorTag.innerHTML = members[i][insertInfo];
           if (j == 0 && members[i].middle_name != null) {
             fullname = newAnchorTag.innerHTML = `${newAnchorTag.innerHTML} ${members[i].middle_name} ${members[i].last_name}`;
@@ -60,6 +61,10 @@ function createTable(members, filter1) {
       tableBody.appendChild(newTr);
     }
   }
+  if (filter1 == 0) {
+    window.alert("Ooops! No results found for your criteria.\nPlease change your selection.")
+    // document.getElementById('houseData2').innerHTML = "Ooops! No results found for your criteria.";
+  }
 }
 
 //Filtros Tablas
@@ -69,76 +74,4 @@ $(document).ready(function() {
 
 
 
-// function canISeeTheMember(myMembers){
-    
-//   var partyFilter = false;
-//   var stateFilter = false;
-  
-//   //We store the values of the checkboxes that are checked i.e ["R", "D"]
-//   var arrayOfCheckedCheckboxes = [];
-  
-//   //We populate the array with an R if the Rep Cb is checked
-//   if(document.getElementById("R").checked){
-//       arrayOfCheckedCheckboxes.push("R");
-//   }
-  
-//   if(document.getElementById("D").checked){
-//       arrayOfCheckedCheckboxes.push("D");
-//   }
-  
-//   if(document.getElementById("I").checked){
-//       arrayOfCheckedCheckboxes.push("I");
-//   }
-//   for (let i = 0; i < myMembers.length; i++){
-//   if(arrayOfCheckedCheckboxes.includes(myMembers.party) || arrayOfCheckedCheckboxes.length == 0){
-//       partyFilter = true;
-//   }
 
-  
-//   if(document.getElementById("stateSelect").value == myMembers.state || document.getElementById("stateSelect").value == "all"){
-//       stateFilter = true;
-  
-// }
-  
-  
-//   return partyFilter && stateFilter;
-
-// }
-// }
-
-
-// document.getElementById("R").addEventListener("click", function () {
-//   createTable();
-// })
-
-// document.getElementById("D").addEventListener("click", function () {
-//    createTable();
-// })
-
-// document.getElementById("I").addEventListener("click", function () {
-//    createTable();
-// })
-
-// document.getElementById("stateSelect").addEventListener("change", function () {
-//    createTable();
-// })
-  
-
-
-
-
-
-
-// $(document).ready(function(){ 
-// //    $(window).scroll(function(){ 
-// //        if ($(this).scrollTop() > 100) { 
-// //            $('#scroll').fadeIn(1000); 
-// //        } else { 
-// //            $('#scroll').fadeOut(1000); 
-// //        } 
-// //    }); 
-//   $('#scroll').click(function(){ 
-//       $("html, body").animate({ scrollTop: 0 }, 600); 
-//       return false; 
-//   }); 
-// });
