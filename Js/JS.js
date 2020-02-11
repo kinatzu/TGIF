@@ -30,7 +30,7 @@ function filters() {
 
 
 //Creación tabla con miembros y filtro
-function createTable(members, filter1) {
+function createTable(members, filter1, filter2) {
   houseData.innerHTML = "";
 
   let tableBody = document.getElementById("houseData");
@@ -61,10 +61,8 @@ function createTable(members, filter1) {
       tableBody.appendChild(newTr);
     }
   }
-
   if (tableBody.innerHTML == '') {
-    alert("Ooops! No results found for your criteria.\nPlease change your selection.")
-    // document.getElementById('houseData2').innerHTML = "Ooops! No results found for your criteria.";
+    document.getElementById('houseData2').innerHTML = "Ooops! No results found for your criteria.";
   }
 }
 
