@@ -23,7 +23,7 @@ $(document).ready(function() {
 
 
 
-//TABLES
+
 const members = data.results[0].members;
 
 createTable();
@@ -56,7 +56,7 @@ function createTable() {
     var votesParty = members[i].votes_with_party_pct + "% ";
     //DIFERENT VARIABLES TO OBTAIN THE DIFFERENT ATTRIBUTES OF EVERY MEMBER
     var insertCell = [link, party, state, seniority, votesParty];
-    
+
     if (showData(members[i])) {
       
       for (var j = 0; j < insertCell.length; j++) {
@@ -67,13 +67,12 @@ function createTable() {
       document.getElementById("houseData").append(newRow);
     }
   }
-  
   if (document.getElementById("houseData").innerHTML === "") {
-    document.getElementById("houseData").innerHTML = "Ooops! No results found for your criteria.";
+    document.getElementById("houseData").innerHTML = "Ooops! No results found for your criteria."; //IF THE RESULT OF THE SEARCH IS EMPTY, SHOWS THIS MESSAGE IN THE TABLE
   }
 }
 
-
+//QUERYSELECTORS FILTERS CHECKBOXES. querySelectorAll() RETURNS A NODELIST OF YOUT TABLE DEPENDS THE RESULTS YOU WANT TO CHECK
 document
   .querySelectorAll("input[name=filtro]")[0]
   .addEventListener("click", createTable);
@@ -85,21 +84,18 @@ document
   .addEventListener("click", createTable);
 
 function showData(members) {
-  var dropdown = document.getElementById("filterstate").value;
-  var checkBox = document.querySelectorAll("input[name=filtro]");
-  var checkedParty = document.querySelectorAll("input[name=filtro]:checked");
+  var dropdown = document.getElementById("filterstate").value; //DROPDOWN STATES MENU 
+  var checkBox = document.querySelectorAll("input[name=filtro]"); //PARTY CHECKBOX QUERYSELECTOR
+  var checkedParty = document.querySelectorAll("input[name=filtro]:checked"); //HERE INSERTS THE RESULTS OF MEMBERS WITH I, D or R FOR SHOWS LATER
 
   for (var k = 0; k < members.length; k++) {}
   
-  if (checkedParty.length === 0 && dropdown == "All") {
+  if (checkedParty.length === 0 && dropdown == "All") { //IF YOU SELECT ALL IN THE DROPDOWN, RETURMS 'TRUE' (SHOWS ALL THE STATES)
     return true;
   }
 
-  for (var j = 0; j < checkBox.length; j++) {
-    if (
-      checkBox[j].checked &&
-      members.party == checkBox[j].value &&
-      (dropdown === members.state || dropdown === "All")
+  for (var j = 0; j < checkBox.length; j++) { //NEW LOOP FOR THE CHECKBOXES
+    if (checkBox[j].checked && members.party == checkBox[j].value && (dropdown === members.state || dropdown === "All") //COMBINATION OF TWO FILTERS (CHECKBOXES + STATE FILTERS)
     ) {
       return true;
     } else if (checkedParty.length === 0 && dropdown === members.state) {
@@ -135,57 +131,5 @@ function states() {
     options.appendChild(option);
   }
 }
-
-
-// const hMembers = data.results[0].members;
-
-
-// //Datos a mostrar en la tabla
-// createTable(hMembers, ["D", "R", "I"]);
-
-// //Evenlistener checkboxes
-// let checkBoxGroup = document.getElementsByName("filter");
-// checkBoxGroup.forEach(checkbox => checkbox.addEventListener("click", () => filters()))
-
-// function filters() {  //Función para los filtros tipo checkbox
-//   let checkBoxFilters = Array.from(document.querySelectorAll('input[name=filter]:checked')).map(array => array.value);
-//   createTable(hMembers, checkBoxFilters)
-// }
-// //Creación tabla con miembros y filtro
-// function createTable(members, filter1, filter2) {
-//   houseData.innerHTML = "";
-
-//   let tableBody = document.getElementById("houseData"); //Creación tabla en id
-//   let membersinfo = ["first_name", "party", "state", "seniority", "votes_with_party_pct"];
-
-//   for (let i = 0; i < members.length; i++) {
-//     if (filter1.includes(members[i].party) || filter1.length < 1) { //Condicional con OR para comprobar si contiene un determinado partido u otro
-//       let newTr = document.createElement("tr");
-//       for (let j = 0; j < membersinfo.length; j++) {
-//         let insertInfo = membersinfo[j]; //Variable que toma todos los atributos de membersinfo
-//         let newTd = document.createElement("td");
-//         if (j == 0) {
-//           let newAnchorTag = document.createElement("a");
-//           newAnchorTag.setAttribute("href", members[i].url); //Crea atributo (link) dentro de <a>
-//           newAnchorTag.setAttribute("target", "_blank"); //Ejecutar link en pestaña adicional
-//           newAnchorTag.innerHTML = members[i][insertInfo];
-//           if (j == 0 && members[i].middle_name != null) { //Condicional para buscar si hay middle name.
-//             fullname = newAnchorTag.innerHTML = `${newAnchorTag.innerHTML} ${members[i].middle_name} ${members[i].last_name}`;
-//           } else {
-//             newAnchorTag.innerHTML = `${newAnchorTag.innerHTML} ${members[i].last_name}`;
-//           }
-//           newTd.appendChild(newAnchorTag);
-//         } else {
-//           newTd.innerHTML = members[i][insertInfo];
-//         }
-//         newTr.appendChild(newTd);
-//       }
-//       tableBody.appendChild(newTr);
-//     }
-//   }
-//   if (tableBody.innerHTML == '') {
-//     document.getElementById('houseData2').innerHTML = "Ooops! No results found for your criteria.";
-//   }
-// }
 
 

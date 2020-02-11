@@ -11,7 +11,7 @@ var statistics = {
     }
 }
  
-var array = (data.results[0].members);
+var myMembers = (data.results[0].members);
 var leastoftenvoteArray = [];
 var mostoftenvoteArray = [];
 var mostpartyvoteArray = [];
@@ -27,13 +27,13 @@ var totalvotesArray = [];
   //Encotnrar % congresistas
   fillPartyArray("D", democratArray);
   fillPartyArray("R", republicanArray);
-  calcVotes(array, totalvotesArray, "Total")
+  calcVotes(myMembers, totalvotesArray, "Total")
    
    
   function fillPartyArray(partyValue, targetArray) {  //Función para el nº de representantes
-      for (var i = 0; i < array.length; i++) {
-          if (array[i].party == partyValue) {      //comparamos si el Partido del miembro es igual al valor en base al siguiente switch
-              targetArray.push(array[i]);          // Hacemos push para insertar el valor.
+      for (var i = 0; i < myMembers.length; i++) {
+          if (myMembers[i].party == partyValue) {      //comparamos si el Partido del miembro es igual al valor en base al siguiente switch
+              targetArray.push(myMembers[i]);          // Hacemos push para insertar el valor.
           }
       }
       switch (partyValue) {                        //Iniciamos switch para agregar condicionales
@@ -48,8 +48,8 @@ var totalvotesArray = [];
               calcVotes(targetArray, republicanvotesArray, "R");
               break;
       }
-      statistics.glance.number_total_reps = JSON.stringify(array.length);
-      document.getElementById("totalnumrep").innerHTML = array.length;
+      statistics.glance.number_total_reps = JSON.stringify(myMembers.length);
+      document.getElementById("totalnumrep").innerHTML = myMembers.length;
   }
    
   function calcVotes(targetArray, averageArray, partyValue) {             //función cálculo de Votos totales
@@ -81,12 +81,12 @@ var totalvotesArray = [];
   // 10% mas bajo de party votes
  
 function orderleastpartyVotes() {
-    array.sort(function (a, b) {
+    myMembers.sort(function (a, b) {
         return a.votes_with_party_pct - b.votes_with_party_pct;
     });
-    for (var i = 0; i < array.length; i++) {
-        if (leastpartyvoteArray.length < (array.length * 0.1) || leastpartyvoteArray[leastpartyvoteArray.length - 1].votes_with_party_pct == array[i].votes_with_party_pct) {
-            leastpartyvoteArray.push(array[i]);
+    for (var i = 0; i < myMembers.length; i++) {
+        if (leastpartyvoteArray.length < (myMembers.length * 0.1) || leastpartyvoteArray[leastpartyvoteArray.length - 1].votes_with_party_pct == myMembers[i].votes_with_party_pct) {
+            leastpartyvoteArray.push(myMembers[i]);
         }
     }
     var result = "",
@@ -110,12 +110,12 @@ orderleastpartyVotes()
 // 10% mas alto de party votes
  
 function ordermostpartyVotes() {
-    array.sort(function (a, b) {
+    myMembers.sort(function (a, b) {
         return b.votes_with_party_pct - a.votes_with_party_pct;
     });
-    for (var i = 0; i < array.length; i++) {
-        if (mostpartyvoteArray.length < (array.length * 0.1) || mostpartyvoteArray[mostpartyvoteArray.length - 1].votes_with_party_pct == array[i].votes_with_party_pct) {
-            mostpartyvoteArray.push(array[i]);
+    for (var i = 0; i < myMembers.length; i++) {
+        if (mostpartyvoteArray.length < (myMembers.length * 0.1) || mostpartyvoteArray[mostpartyvoteArray.length - 1].votes_with_party_pct == myMembers[i].votes_with_party_pct) {
+            mostpartyvoteArray.push(myMembers[i]);
         }
     }
     var result = "",
