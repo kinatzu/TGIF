@@ -67,27 +67,24 @@
         </div>
         <div id="filters" class="d-flex justify-content-between">
 
-            <div>
-              <span class="filtertitle">Filter by Party:</span>
-              <span class="filterbox">
-              <label class="labelfilter"><input type="checkbox" name="filter" value="R" id="R" unchecked> Republican</label>
-              <label class="labelfilter"><input type="checkbox" name="filter" value="D" id="D" unchecked> Democrat</label>
-              <label class="labelfilter"><input type="checkbox" name="filter" value="I" id="I" unchecked> Independent</label></span>
-          </div>
+          <div>
+            <span class="filtertitle">Filter by Party:</span>
+            <span class="filterbox">
+            <label class="labelfilter"><input type="checkbox" name="filtro" id="R" value="R" unchecked> Republican</label>
+            <label class="labelfilter"><input type="checkbox" name="filtro" id="D" value="D" unchecked> Democrat</label>
+            <label class="labelfilter"><input type="checkbox" name="filtro" id="I" value="I" unchecked> Independent</label></span>
+        </div>
 
           <div>
             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-            <span class="filtertitle">Filter by State:</span>
-              <select name="state" id="stateSelect">
-                  <option value="all">All States</option>
+              <span class="filtertitle">Filter by State:</span>
+              <select id="filterstate" name="states">
+                <option value="All">All States</option>
               </select>
           </div>
-
-
       </div>
   </div>
-        
-
+  </div>
         <div class="tablehouse">
           <table id= "example" class="table table-hover">
             <thead>

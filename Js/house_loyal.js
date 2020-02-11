@@ -1,4 +1,4 @@
-var statistics = {
+var statistics = { 
     glance: {
         "number_democrats_reps": 0,
         "number_republicans_reps": 0,

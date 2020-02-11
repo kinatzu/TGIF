@@ -15,9 +15,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    <!-- <link rel="stylesheet" href="index-filter.css"> -->
-    
-   
+    <!-- <link rel="stylesheet" href="index-filter.css"> --> 
 </head>
 <body>
     <header>
@@ -61,37 +59,29 @@
         </li>
       </ul>
       </nav>
-
       <div class="congressbox">
         <h1 class="congresstitle">CONGRESSMEN</h1>
         <p>The major power of the House is to pass federal legislation that affects the entire country, although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no majority in the Electoral College.</p>
 
         <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative.</p>
         </div>
-        <!-- Default inline 1-->
         <div id="filters" class="d-flex justify-content-between">
-
           <div>
             <span class="filtertitle">Filter by Party:</span>
             <span class="filterbox">
-            <label class="labelfilter"><input type="checkbox" name="filter" value="R" id="R" unchecked> Republican</label>
-            <label class="labelfilter"><input type="checkbox" name="filter" value="D" id="D" unchecked> Democrat</label>
-            <label class="labelfilter"><input type="checkbox" name="filter" value="I" id="I" unchecked> Independent</label></span>
+            <label class="labelfilter"><input type="checkbox" name="filtro" id="R" value="R" unchecked> Republican</label>
+            <label class="labelfilter"><input type="checkbox" name="filtro" id="D" value="D" unchecked> Democrat</label>
+            <label class="labelfilter"><input type="checkbox" name="filtro" id="I" value="I" unchecked> Independent</label></span>
         </div>
-
           <div>
             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
               <span class="filtertitle">Filter by State:</span>
-              <select name="state" id="stateSelect">
-                <option value="all">All States</option>
+              <select id="filterstate" name="states">
+                <option value="All">Select all</option>
               </select>
           </div>
-
-
       </div>
-  </div>
-
-      
+  </div> 
         <div class="tablehouse">
           <table id="example" class="table table-hover" style="width:100%">
             <thead>
@@ -103,22 +93,12 @@
                 <th scope="col">% Votes w/Party</th>
               </tr>
             </thead>
-            <tbody id="houseData">
-          </tbody>
-          <tbody id="houseData2"></tbody>
+            <tbody id="houseData"></tbody>
         </table>
       </div>
-      <!-- <div class="row">
-            <div class="col-sm-12">
-
-                <div id="noResultsWarning" class="text-center alert alert-warning">
-                    <h4><strong>Ooops! </strong>No results found for your criteria. Please change your selection.</h4>
-                </div>
-            </div> -->
-
       <footer>© TGIF 2018 | All rights Reserved</footer>
 </body>      
 
 <script src="./Js/pro-congress-113-house.js"></script>
-<script src="./Js/JS.js"></script>
+<script src="./Js/house_data.js"></script>
 
