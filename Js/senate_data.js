@@ -17,7 +17,7 @@ function createTable() {
     var newRow = document.createElement("tr");
     var firstName = members[i].first_name; 
     var middleName = members[i].middle_name;
-    //STARTS 'IF' TO CHECK MIDDLE AND FIRST NAME, IF NOT ADD ONE SPACE
+    //CONDITION TO ADD AN SPACE IF DID'NT HAVE MIDDLE NAME
     if (middleName === null) {
       middleName = "";
     }
@@ -26,6 +26,7 @@ function createTable() {
     //NEW VARIABLE TO PUT INSIDE <A> THE ATTRIBUTE HREF (URL OF THE MEMBER)
     var link = document.createElement("a");
     link.setAttribute("href", members[i].url);
+    //INSERT THE URL INSIDE THE COMPLETE NAME
     link.innerHTML = fullname;
     var party = members[i].party;
     var state = members[i].state;
@@ -39,24 +40,21 @@ function createTable() {
         var tableCell = document.createElement("td");
         tableCell.append(insertCell[j]);
         newRow.append(tableCell);
-      }
+      } //NEW LOOP TO PRINT THE TABLE CREATING TR & TD
       document.getElementById("senateData").append(newRow);
-    }
+    } //INSERT THE RESULTS IN THE ID senateData (TBDOY)
   }
   if (document.getElementById("senateData").innerHTML === "") {
     document.getElementById("senateData").innerHTML = "Ooops! No results found for your criteria.";
-  }
+  }//IF DIDN'T HAVE ANY RESULT APEARS A 'NOT FOUND' MESSAGE
 }
 
 
-document
-  .querySelectorAll("input[name=filtro]")[0]
+document.querySelectorAll("input[name=filtro]")[0]
   .addEventListener("click", createTable);
-document
-  .querySelectorAll("input[name=filtro]")[1]
+document.querySelectorAll("input[name=filtro]")[1]
   .addEventListener("click", createTable);
-document
-  .querySelectorAll("input[name=filtro]")[2]
+document.querySelectorAll("input[name=filtro]")[2]
   .addEventListener("click", createTable);
 
 function showData(members) {
