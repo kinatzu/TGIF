@@ -61,7 +61,8 @@ function createTable(members, filter1) {
       tableBody.appendChild(newTr);
     }
   }
-  if (filter1 == 0) {
+
+  if (tableBody.innerHTML == '') {
     alert("Ooops! No results found for your criteria.\nPlease change your selection.")
     // document.getElementById('houseData2').innerHTML = "Ooops! No results found for your criteria.";
   }
