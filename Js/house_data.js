@@ -66,6 +66,8 @@ fetch("https://api.propublica.org/congress/v1/113/house/members.json", {
 //createTable();
 //showState(members);
 //states();
+
+
 //START FUNCTION TO PRINT TABLES
 function createTable() {
   var tbody = document.getElementById("houseData");
