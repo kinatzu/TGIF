@@ -1,4 +1,4 @@
-var statistics = { 
+var statistics = { //EMPTY OBJECT TO STOCK THE DIFERENT VALUES. ALL STARTS WITH 0 BECAUSE LATER CHANGE THIS VALUE DEPENDS THE FUNCTION RESULTS
     glance: {
         "number_democrats_reps": 0,
         "number_republicans_reps": 0,
@@ -11,7 +11,7 @@ var statistics = {
     }
 }
  
-var myMembers = (data.results[0].members);
+var myMembers = (data.results[0].members); //EMPTY VARIABLES TO ADD THE VALUES OF THE FUNCTIONS
 var leastoftenvoteArray = [];
 var mostoftenvoteArray = [];
 var mostpartyvoteArray = [];
@@ -24,20 +24,20 @@ var independentArray = [];
 var independentvotesArray = [];
 var totalvotesArray = [];
  
-  //Encotnrar % congresistas
+  //FIND % OF MEMBERS PER PARTY & TOTAL
   fillPartyArray("D", democratArray);
   fillPartyArray("R", republicanArray);
   calcVotes(myMembers, totalvotesArray, "Total")
    
    
-  function fillPartyArray(partyValue, targetArray) {  //Función para el nº de representantes
+  function fillPartyArray(partyValue, targetArray) {  //FUNCTION FOR NUMBER OF MEMBERS
       for (var i = 0; i < myMembers.length; i++) {
-          if (myMembers[i].party == partyValue) {      //comparamos si el Partido del miembro es igual al valor en base al siguiente switch
-              targetArray.push(myMembers[i]);          // Hacemos push para insertar el valor.
+          if (myMembers[i].party == partyValue) {      //IF THE PARTY OF THE MEMBER IS EQUAL TO THE PARTY VALUE... STARTS THE SWITCH
+              targetArray.push(myMembers[i]);          // PUSH TO ADD THE RESULTS
           }
       }
-      switch (partyValue) {                        //Iniciamos switch para agregar condicionales
-          case "D":                  // caso D (Democrat)
+      switch (partyValue) {                        //STARTING THE SWITCH WITH CONDITIONS
+          case "D":                  // CASE D FOR DEMOCRATS
               statistics.glance.number_democrats_reps = JSON.stringify(targetArray.length); // Si el numero de demócratas = JSON.stringfy de la longitud del targetArray ---->
               document.getElementById("demnumrep").innerHTML = statistics.glance.number_democrats_reps; //inserta (getElement...) en el HTML (innerHTML) el total de demócratas con la id "demnumrep"
               calcVotes(targetArray, democratvotesArray, "D");
@@ -52,7 +52,7 @@ var totalvotesArray = [];
       document.getElementById("totalnumrep").innerHTML = myMembers.length;
   }
    
-  function calcVotes(targetArray, averageArray, partyValue) {             //función cálculo de Votos totales
+  function calcVotes(targetArray, averageArray, partyValue) {             //FUNCTION TO CALCULATE THE TOTAL VOTES
       for (var i = 0; i < targetArray.length; i++) {
           averageArray.push(JSON.parse(targetArray[i].votes_with_party_pct));
       }
@@ -64,7 +64,7 @@ var totalvotesArray = [];
    
       switch (partyValue) {
           case "D":
-              statistics.glance.pct_democrat_voted_with_party = media.toFixed(2);
+              statistics.glance.pct_democrat_voted_with_party = media.toFixed(2); //toFixed(2) SHOWS TWO DECIMALS 
               document.getElementById("demvotedparty").innerHTML = statistics.glance.pct_democrat_voted_with_party;
               break;
           case "R":

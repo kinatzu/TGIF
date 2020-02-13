@@ -43,9 +43,15 @@ a{
     color: white;
     font-size: 20px !important;
 }
+td, tr{
+    background-color: white;
+}
 .indexcontainer{
     display: flex;
     justify-content: center;
+}
+#boxLoading{
+    text-align: center;
 }
 .whitehouse{
    padding-top: 50px;
@@ -64,6 +70,12 @@ a{
 }
 a:hover{
     color: #F0C419;
+}
+#noResultsWarning{
+    height: 60px;
+    padding-top: 20px;
+    font-weight: bold;
+    background-color: rgba(255, 99, 71, 0.719) !important;
 }
 .tablehouse{
     padding-top: 30px;

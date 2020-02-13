@@ -16,19 +16,37 @@ $(document).ready(function () {
 });
 
 
-//FILTER & SEARCH FUNCTION TABLES
-$(document).ready(function() {
-  $('#example').DataTable();
-} );
 
 
+var members
 
+fetch("https://api.propublica.org/congress/v1/113/house/members.json", {
+	method: "GET",
+	headers: {
+    'X-API-KEY': 'IOm0zWuxC5T9Ql3DgwVADArCWD8nEQiHc2kEAWKz'
+  }
+}).then(function (data) {
+		return data.json();
+	})
+.then(function(table) {
+  console.log(table);
+  members = table.results[0].members;
+  createTable()
+  //showState(members);
+  states();
+  querySelectors();
+  boxLoading.style.display = 'none';
+})
+.catch(function(error) {
+  console.log("Request failed:" + error.message);
+});
 
-const members = data.results[0].members;
+// const members = json.results[0].members;
 
-createTable();
-showState(members);
-states();
+// function chargeMembers(){
+//createTable();
+//showState(members);
+//states();
 //START FUNCTION TO PRINT TABLES
 function createTable() {
   var tbody = document.getElementById("houseData");
@@ -68,37 +86,43 @@ function createTable() {
     }
   }
   if (document.getElementById("houseData").innerHTML === "") {
-    document.getElementById("houseData").innerHTML = "Ooops! No results found for your criteria."; //IF THE RESULT OF THE SEARCH IS EMPTY, SHOWS THIS MESSAGE IN THE TABLE
+    // document.getElementById("houseData").innerHTML = "Ooops! No results found for your criteria."; //IF THE RESULT OF THE SEARCH IS EMPTY, SHOWS THIS MESSAGE IN THE TABLE
+    noResultsWarning.style.display = 'block'
+  } else {
+    noResultsWarning.style.display = 'none'
   }
 }
 
 //QUERYSELECTORS FILTERS CHECKBOXES. querySelectorAll() RETURNS A NODELIST OF YOUT TABLE DEPENDS THE RESULTS YOU WANT TO CHECK
-document
-  .querySelectorAll("input[name=filtro]")[0]
-  .addEventListener("click", createTable);
-document
-  .querySelectorAll("input[name=filtro]")[1]
-  .addEventListener("click", createTable);
-document
-  .querySelectorAll("input[name=filtro]")[2]
-  .addEventListener("click", createTable);
+function querySelectors() {
 
-function showData(members) {
+  document.querySelectorAll("input[name=filtro]")[0]
+    .addEventListener("click", createTable);
+  document.querySelectorAll("input[name=filtro]")[1]
+    .addEventListener("click", createTable);
+  document.querySelectorAll("input[name=filtro]")[2]
+    .addEventListener("click", createTable);
+  document.getElementById("filterstate").addEventListener("change", createTable);
+}
+
+
+//FUNCTION CHECKBOXES + DROPDOWN  
+function showData(member) {
   var dropdown = document.getElementById("filterstate").value; //DROPDOWN STATES MENU 
   var checkBox = document.querySelectorAll("input[name=filtro]"); //PARTY CHECKBOX QUERYSELECTOR
-  var checkedParty = document.querySelectorAll("input[name=filtro]:checked"); //HERE INSERTS THE RESULTS OF MEMBERS WITH I, D or R FOR SHOWS LATER
+  var checkedParty = document.querySelectorAll("input[name=filtro]:checked"); //HERE INSERTS THE RESULTS OF MEMBER WITH I, D or R FOR SHOWS LATER
 
-  for (var k = 0; k < members.length; k++) {}
+  //for (var k = 0; k < member.length; k++) {}
   
   if (checkedParty.length === 0 && dropdown == "All") { //IF YOU SELECT ALL IN THE DROPDOWN, RETURMS 'TRUE' (SHOWS ALL THE STATES)
     return true;
   }
 
   for (var j = 0; j < checkBox.length; j++) { //NEW LOOP FOR THE CHECKBOXES
-    if (checkBox[j].checked && members.party == checkBox[j].value && (dropdown === members.state || dropdown === "All") //COMBINATION OF TWO FILTERS (CHECKBOXES + STATE FILTERS)
+    if (checkBox[j].checked && member.party == checkBox[j].value && (dropdown === member.state || dropdown === "All") //COMBINATION OF TWO FILTERS (CHECKBOXES + STATE FILTERS)
     ) {
       return true;
-    } else if (checkedParty.length === 0 && dropdown === members.state) {
+    } else if (checkedParty.length === 0 && dropdown === member.state) {
       return true;
     }
   }
@@ -106,14 +130,17 @@ function showData(members) {
   return false;
 }
 
-function showState(members) {
-  var dropdown = document.getElementById("filterstate").value;
-  if (dropdown === members.state || dropdown === "All") {
-    return true;
-  }
-}
-document.getElementById("filterstate").addEventListener("change", createTable);
+//FUNCTION TO SHOW ALL STATES WHEN CLICK ON ''SELECT ALL''
+// function showState(members) {
+//   var dropdown = document.getElementById("filterstate").value;
+//   if (dropdown === members.state || dropdown === "All") {
+//     return true;
+//   }
+// }
 
+
+
+//FUNCTION TO PRINT STATES INITIALS (NY, DK, AR...)
 function states() {
   var filter = [];
   for (i = 0; i < members.length; i++) {
@@ -133,3 +160,7 @@ function states() {
 }
 
 
+// //FILTER & SEARCH FUNCTION TABLES
+// $(document).ready(function() {
+//   $('#example').DataTable();
+// } );

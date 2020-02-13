@@ -93,11 +93,18 @@
                 <th scope="col">% Votes w/Party</th>
               </tr>
             </thead>
-            <tbody id="houseData"></tbody>
+            <div class="tbodyback">
+            <tbody id="houseData">
+            </tbody>
+          </div>
         </table>
+        <div id="noResultsWarning" class="text-center alert alert-warning" style="display: none;">
+          <h4><strong>Ooops! </strong>No results found for your criteria. Please change your selection.</h4></div>
+        <div id="boxLoading"><img src="./media/Dual.svg" alt="loading">
+        <!-- <p><h3>LOADING DATA...</p></h3></div> -->
       </div>
       <footer>© TGIF 2018 | All rights Reserved</footer>
 </body>      
-<script src="./Js/pro-congress-113-house.js"></script>
+<!-- <script src="./Js/pro-congress-113-house.js"></script> -->
 <script src="./Js/house_data.js"></script>
 
