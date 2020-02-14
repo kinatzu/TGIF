@@ -1,3 +1,48 @@
+//Get the button:
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+var members
+
+fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
+	method: "GET",
+	headers: {
+    'X-API-KEY': 'IOm0zWuxC5T9Ql3DgwVADArCWD8nEQiHc2kEAWKz'
+  }
+}).then(function (data) {
+		return data.json();
+	})
+.then(function(table) {
+  console.log(table);
+  members = table.results[0].members;
+  orderleastpartyVotes();
+  ordermostpartyVotes();
+  fillPartyArray("D", democratArray);
+  fillPartyArray("R", republicanArray);
+  fillPartyArray("I", independentArray);
+  calcVotes(members, totalvotesArray, "Total")
+})
+// .catch(function(error) {
+//   console.log("Request failed:" + error.message);
+// });
+
+
 var statistics = {
     glance: {
         "number_democrats_reps": 0,
@@ -11,7 +56,7 @@ var statistics = {
     }
 }
  
-var array = (data.results[0].members);
+// var members = (data.results[0].members);
 var leastoftenvoteArray = [];
 var mostoftenvoteArray = [];
 var mostpartyvoteArray = [];
@@ -25,15 +70,16 @@ var independentvotesArray = [];
 var totalvotesArray = [];
  
    //Encotnrar % congresistas
-fillPartyArray("D", democratArray);
-fillPartyArray("R", republicanArray);
-fillPartyArray("I", independentArray);
-calcVotes(array, totalvotesArray, "Total")
+// fillPartyArray("D", democratArray);
+// fillPartyArray("R", republicanArray);
+// fillPartyArray("I", independentArray);
+// calcVotes(members, totalvotesArray, "Total")
  
 function fillPartyArray(partyValue, targetArray) {
-    for (var i = 0; i < array.length; i++) {
-        if (array[i].party == partyValue) {
-            targetArray.push(array[i]);
+    console.log(members);
+    for (var i = 0; i < members.length; i++) {
+        if (members[i].party == partyValue) {
+            targetArray.push(members[i]);
         }
     }
     switch (partyValue) {
@@ -54,8 +100,8 @@ function fillPartyArray(partyValue, targetArray) {
             break;
             
     }
-    statistics.glance.number_total_reps = JSON.stringify(array.length);
-    document.getElementById("totalnumrep").innerHTML = array.length;
+    statistics.glance.number_total_reps = JSON.stringify(members.length);
+    document.getElementById("totalnumrep").innerHTML = members.length;
 }
 
  
@@ -91,12 +137,12 @@ function calcVotes(targetArray, averageArray, partyValue) {
   // 10% mas bajo de party votes
  
 function orderleastpartyVotes() {
-    array.sort(function (a, b) {
+    members.sort(function (a, b) {
         return a.votes_with_party_pct - b.votes_with_party_pct;
     });
-    for (var i = 0; i < array.length; i++) {
-        if (leastpartyvoteArray.length < (array.length * 0.1) || leastpartyvoteArray[leastpartyvoteArray.length - 1].votes_with_party_pct == array[i].votes_with_party_pct) {
-            leastpartyvoteArray.push(array[i]);
+    for (var i = 0; i < members.length; i++) {
+        if (leastpartyvoteArray.length < (members.length * 0.1) || leastpartyvoteArray[leastpartyvoteArray.length - 1].votes_with_party_pct == members[i].votes_with_party_pct) {
+            leastpartyvoteArray.push(members[i]);
         }
     }
     var result = "",
@@ -115,17 +161,17 @@ function orderleastpartyVotes() {
         document.getElementById("leastpartyvote").innerHTML = result;
     }
 }
-orderleastpartyVotes()
+// orderleastpartyVotes()
  
 // 10% mas alto de party votes
  
 function ordermostpartyVotes() {
-    array.sort(function (a, b) {
+    members.sort(function (a, b) {
         return b.votes_with_party_pct - a.votes_with_party_pct;
     });
-    for (var i = 0; i < array.length; i++) {
-        if (mostpartyvoteArray.length < (array.length * 0.1) || mostpartyvoteArray[mostpartyvoteArray.length - 1].votes_with_party_pct == array[i].votes_with_party_pct) {
-            mostpartyvoteArray.push(array[i]);
+    for (var i = 0; i < members.length; i++) {
+        if (mostpartyvoteArray.length < (members.length * 0.1) || mostpartyvoteArray[mostpartyvoteArray.length - 1].votes_with_party_pct == members[i].votes_with_party_pct) {
+            mostpartyvoteArray.push(members[i]);
         }
     }
     var result = "",
@@ -144,12 +190,12 @@ function ordermostpartyVotes() {
         document.getElementById("mostpartyvote").innerHTML = result;
     }
 }
-ordermostpartyVotes()
+// ordermostpartyVotes()
 
-$(document).ready(function() {
-    $('#example').DataTable();
-  } );
+// $(document).ready(function() {
+//     $('#example').DataTable();
+//   } );
   
-  $(document).ready(function() {
-    $('#example2').DataTable();
-  } );
+//   $(document).ready(function() {
+//     $('#example2').DataTable();
+//   } );

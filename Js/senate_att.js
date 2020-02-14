@@ -1,3 +1,52 @@
+//Get the button:
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+
+//FETCH
+
+
+var members
+
+fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
+	method: "GET",
+	headers: {
+    'X-API-KEY': 'IOm0zWuxC5T9Ql3DgwVADArCWD8nEQiHc2kEAWKz'
+  }
+}).then(function (data) {
+		return data.json();
+	})
+.then(function(table) {
+  console.log(table);
+  members = table.results[0].members;
+  orderleastmissedVotes();
+  ordermostmissedVotes();
+  fillPartyArray("D", democratArray);
+  fillPartyArray("R", republicanArray);
+  fillPartyArray("I", independentArray);
+  calcVotes(members, totalvotesArray, "Total");
+})
+.catch(function(error) {
+  console.log("Request failed:" + error.message);
+});
+
+
 var statistics = {
     glance: {
         "number_democrats_reps": 0,
@@ -11,7 +60,7 @@ var statistics = {
     }
 }
  
-var array = (data.results[0].members);
+// var members = (data.results[0].members);
 var leastoftenvoteArray = [];
 var mostoftenvoteArray = [];
 var mostpartyvoteArray = [];
@@ -27,12 +76,12 @@ var totalvotesArray = [];
 // 10% mas bajo de missed votes
 
 function orderleastmissedVotes() {
-    array.sort(function (a, b) {
+    members.sort(function (a, b) {
         return b.missed_votes_pct - a.missed_votes_pct;
     });
-    for (var i = 0; i < array.length; i++) {
-        if (leastoftenvoteArray.length < (array.length * 0.1) || leastoftenvoteArray[leastoftenvoteArray.length - 1].missed_votes_pct == array[i].missed_votes_pct) {
-            leastoftenvoteArray.push(array[i]);
+    for (var i = 0; i < members.length; i++) {
+        if (leastoftenvoteArray.length < (members.length * 0.1) || leastoftenvoteArray[leastoftenvoteArray.length - 1].missed_votes_pct == members[i].missed_votes_pct) {
+            leastoftenvoteArray.push(members[i]);
         }
     }
     var result = "",
@@ -51,17 +100,17 @@ function orderleastmissedVotes() {
         document.getElementById("leastmissedvote").innerHTML = result;
     }
 }
-orderleastmissedVotes();
+// orderleastmissedVotes();
 
 // 10% mas alto de missed votes
  
 function ordermostmissedVotes() {
-    array.sort(function (a, b) {
+    members.sort(function (a, b) {
         return a.missed_votes_pct - b.missed_votes_pct;
     });
-    for (var i = 0; i < array.length; i++) {
-        if (mostoftenvoteArray.length < (array.length * 0.1) || mostoftenvoteArray[mostoftenvoteArray.length - 1].missed_votes_pct == array[i].missed_votes_pct) {
-            mostoftenvoteArray.push(array[i]);
+    for (var i = 0; i < members.length; i++) {
+        if (mostoftenvoteArray.length < (members.length * 0.1) || mostoftenvoteArray[mostoftenvoteArray.length - 1].missed_votes_pct == members[i].missed_votes_pct) {
+            mostoftenvoteArray.push(members[i]);
         }
     }
  
@@ -81,28 +130,28 @@ function ordermostmissedVotes() {
         document.getElementById("mostmissedvote").innerHTML = result;
     }
 }
-ordermostmissedVotes();
+// ordermostmissedVotes();
  
-$(document).ready(function() {
-    $('#example').DataTable();
-  } );
+// $(document).ready(function() {
+//     $('#example').DataTable();
+//   } );
   
-  $(document).ready(function() {
-    $('#example2').DataTable();
-  } );
+//   $(document).ready(function() {
+//     $('#example2').DataTable();
+//   } );
 
 
   //Encotnrar % congresistas
 fillPartyArray("D", democratArray);
 fillPartyArray("R", republicanArray);
 fillPartyArray("I", independentArray);
-calcVotes(array, totalvotesArray, "Total")
+calcVotes(members, totalvotesArray, "Total")
  
  
 function fillPartyArray(partyValue, targetArray) {
-    for (var i = 0; i < array.length; i++) {
-        if (array[i].party == partyValue) {
-            targetArray.push(array[i]);
+    for (var i = 0; i < members.length; i++) {
+        if (members[i].party == partyValue) {
+            targetArray.push(members[i]);
         }
     }
     switch (partyValue) {
@@ -122,8 +171,8 @@ function fillPartyArray(partyValue, targetArray) {
             calcVotes(targetArray, independentvotesArray, "I");
             break;
     }
-    statistics.glance.number_total_reps = JSON.stringify(array.length);
-    document.getElementById("totalnumrep").innerHTML = array.length;
+    statistics.glance.number_total_reps = JSON.stringify(members.length);
+    document.getElementById("totalnumrep").innerHTML = members.length;
 }
  
 function calcVotes(targetArray, averageArray, partyValue) {
