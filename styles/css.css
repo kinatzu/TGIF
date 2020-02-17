@@ -23,7 +23,7 @@ header{
     color: #F0C419;
 }
 .emailinfo{
-    padding-left: 950px;
+    padding-left: 965px;
     padding-bottom: 100px;
 }
 h1{
@@ -31,6 +31,10 @@ h1{
 }
 a{
     color: white;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: #285680;
 }
 
 .aboutbox{
@@ -45,6 +49,7 @@ a{
 }
 td, tr{
     background-color: white;
+    
 }
 .indexcontainer{
     display: flex;
