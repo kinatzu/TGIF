@@ -53,6 +53,12 @@ td, tr{
 #boxLoading{
     text-align: center;
 }
+#loadingLogo{
+    position: absolute;
+    z-index: 100;
+    right: 480px;
+    top: 570px;
+}
 .whitehouse{
    padding-top: 30px;
    opacity: 80%;

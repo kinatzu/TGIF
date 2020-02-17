@@ -36,7 +36,8 @@ fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
   fillPartyArray("D", democratArray);
   fillPartyArray("R", republicanArray);
   fillPartyArray("I", independentArray);
-  calcVotes(members, totalvotesArray, "Total")
+  calcVotes(members, totalvotesArray, "Total");
+  boxLoading.style.display = 'none';
 })
 // .catch(function(error) {
 //   console.log("Request failed:" + error.message);
