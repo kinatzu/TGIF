@@ -22,7 +22,7 @@ function topFunction() {
 //FETCH
 var members
 
-fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
+fetch("https://api.propublica.org/congress/v1/113/house/members.json", {
 	method: "GET",
 	headers: {
     'X-API-KEY': 'IOm0zWuxC5T9Ql3DgwVADArCWD8nEQiHc2kEAWKz'
