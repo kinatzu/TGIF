@@ -95,7 +95,7 @@ function createTable() {
   }
 }
 
-//QUERYSELECTORS FILTERS CHECKBOXES. querySelectorAll() RETURNS A NODELIST OF YOUT TABLE DEPENDS THE RESULTS YOU WANT TO CHECK
+//QUERYSELECTORS FILTERS CHECKBOXES
 function querySelectors() {
 
   document.querySelectorAll("input[name=filtro]")[0]
