@@ -37,6 +37,7 @@ fetch("https://api.propublica.org/congress/v1/113/house/members.json", {
   ordermostpartyVotes();
   fillPartyArray("D", democratArray);
   fillPartyArray("R", republicanArray);
+  fillPartyArray("I", independentArray);
   calcVotes(members, totalvotesArray, "Total")
 })
 // .catch(function(error) {
@@ -93,6 +94,11 @@ var totalvotesArray = [];
               document.getElementById("repnumrep").innerHTML = statistics.glance.number_republicans_reps;
               calcVotes(targetArray, republicanvotesArray, "R");
               break;
+          case "I":
+                statistics.glance.number_independents_reps = JSON.stringify(targetArray.length);
+                document.getElementById("indnumrep").innerHTML = statistics.glance.number_independents_reps;
+                calcVotes(targetArray, independentvotesArray, "I");
+                break;
       }
       statistics.glance.number_total_reps = JSON.stringify(members.length);
       document.getElementById("totalnumrep").innerHTML = members.length;
@@ -111,15 +117,19 @@ var totalvotesArray = [];
       switch (partyValue) {
           case "D":
               statistics.glance.pct_democrat_voted_with_party = media.toFixed(2); //toFixed(2) SHOWS TWO DECIMALS 
-              document.getElementById("demvotedparty").innerHTML = statistics.glance.pct_democrat_voted_with_party;
+              document.getElementById("demvotedparty").innerHTML = statistics.glance.pct_democrat_voted_with_party + " %";
               break;
           case "R":
               statistics.glance.pct_republicans_voted_with_party = media.toFixed(2);
-              document.getElementById("repvotedparty").innerHTML = statistics.glance.pct_republicans_voted_with_party;
+              document.getElementById("repvotedparty").innerHTML = statistics.glance.pct_republicans_voted_with_party + " %";
               break;
+          case "I":
+                statistics.glance.pct_independents_voted_with_party = media.toFixed(2);
+                document.getElementById("indvotedparty").innerHTML = "0" + " %";
+                break;
           case "Total":
               statistics.glance.pct_total_voted_with_party = media.toFixed(2);
-              document.getElementById("totalvotedparty").innerHTML = statistics.glance.pct_total_voted_with_party;
+              document.getElementById("totalvotedparty").innerHTML = statistics.glance.pct_total_voted_with_party + " %";
               break;
       }
   }
@@ -145,7 +155,7 @@ function orderleastpartyVotes() {
             result += "<tr>" + "<td>" + '<a href="' + leastpartyvoteArray[i].url + '">' + leastpartyvoteArray[i].first_name + ' ' + leastpartyvoteArray[i].middle_name + ' ' + leastpartyvoteArray[i].last_name + "</a>" + "</td>";
         }
         result += "<td class='party'>" + (leastpartyvoteArray[i].total_votes - leastpartyvoteArray[i].missed_votes) + "</td>";
-        result += "<td class='state'>" + leastpartyvoteArray[i].votes_with_party_pct + "</td>" + "</tr>";
+        result += "<td class='state'>" + leastpartyvoteArray[i].votes_with_party_pct + " %" +  "</td>" + "</tr>";
     }
     if ((window.location.pathname.includes("/senate_loyal.html")) || (window.location.pathname.includes("/house_loyal.html"))) {
         document.getElementById("leastpartyvote").innerHTML = result;
@@ -174,7 +184,7 @@ function ordermostpartyVotes() {
             result += "<tr>" + "<td>" + '<a href="' + mostpartyvoteArray[i].url + '">' + mostpartyvoteArray[i].first_name + ' ' + mostpartyvoteArray[i].middle_name + ' ' + mostpartyvoteArray[i].last_name + "</a>" + "</td>";
         }
         result += "<td class='party'>" + (mostpartyvoteArray[i].total_votes - mostpartyvoteArray[i].missed_votes) + "</td>";
-        result += "<td class='state'>" + mostpartyvoteArray[i].votes_with_party_pct + "</td>" + "</tr>";    //si añadimos % entre el votes_with_party_pct y el td añadimos %  los resultados
+        result += "<td class='state'>" + mostpartyvoteArray[i].votes_with_party_pct + " %" + "</td>" + "</tr>";    //si añadimos % entre el votes_with_party_pct y el td añadimos %  los resultados
     }
     if ((window.location.pathname.includes("/senate_loyal.html")) || (window.location.pathname.includes("/house_loyal.html"))) {
         document.getElementById("mostpartyvote").innerHTML = result;

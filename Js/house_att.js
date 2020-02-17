@@ -38,6 +38,7 @@ fetch("https://api.propublica.org/congress/v1/113/house/members.json", {
   ordermostmissedVotes();
   fillPartyArray("D", democratArray);
   fillPartyArray("R", republicanArray);
+  fillPartyArray("I", independentArray);
   calcVotes(members, totalvotesArray, "Total");
 })
 .catch(function(error) {
@@ -93,7 +94,7 @@ function orderleastmissedVotes() {
             result += "<tr>" + "<td>" + '<a href="' + leastoftenvoteArray[i].url + '">' + leastoftenvoteArray[i].first_name + ' ' + leastoftenvoteArray[i].middle_name + ' ' + leastoftenvoteArray[i].last_name + "</a>" + "</td>";
         }
         result += "<td class='party'>" + leastoftenvoteArray[i].missed_votes + "</td>";
-        result += "<td class='state'>" + leastoftenvoteArray[i].missed_votes_pct + "</td>" + "</tr>";
+        result += "<td class='state'>" + leastoftenvoteArray[i].missed_votes_pct + " %" + "</td>" + "</tr>";
     }
     if ((window.location.pathname.includes("/house_att.html")) || (window.location.pathname.includes("/senate_att.html"))) {
         document.getElementById("leastmissedvote").innerHTML = result;
@@ -125,7 +126,7 @@ function ordermostmissedVotes() {
             result += "<tr>" + "<td>" + '<a href="' + mostoftenvoteArray[i].url + '">' + mostoftenvoteArray[i].first_name + ' ' + mostoftenvoteArray[i].middle_name + ' ' + mostoftenvoteArray[i].last_name + "</a>" + "</td>";
         }
         result += "<td class='party'>" + mostoftenvoteArray[i].missed_votes + "</td>";
-        result += "<td class='state'>" + mostoftenvoteArray[i].missed_votes_pct + "</td>" + "</tr>";
+        result += "<td class='state'>" + mostoftenvoteArray[i].missed_votes_pct + " %" + "</td>" + "</tr>";
     }
     if ((window.location.pathname.includes("/house_att.html")) || (window.location.pathname.includes("/senate_att.html"))) {
         document.getElementById("mostmissedvote").innerHTML = result;
@@ -156,6 +157,11 @@ function ordermostmissedVotes() {
               document.getElementById("repnumrep").innerHTML = statistics.glance.number_republicans_reps;
               calcVotes(targetArray, republicanvotesArray, "R");
               break;
+         case "I":
+            statistics.glance.number_independents_reps = JSON.stringify(targetArray.length);
+            document.getElementById("indnumrep").innerHTML = statistics.glance.number_independents_reps;
+            calcVotes(targetArray, independentvotesArray, "I");
+            break;
       }
       statistics.glance.number_total_reps = JSON.stringify(members.length);
       document.getElementById("totalnumrep").innerHTML = members.length;
@@ -174,15 +180,19 @@ function ordermostmissedVotes() {
       switch (partyValue) {
           case "D":
               statistics.glance.pct_democrat_voted_with_party = media.toFixed(2);
-              document.getElementById("demvotedparty").innerHTML = statistics.glance.pct_democrat_voted_with_party;
+              document.getElementById("demvotedparty").innerHTML = statistics.glance.pct_democrat_voted_with_party + " %";
               break;
           case "R":
               statistics.glance.pct_republicans_voted_with_party = media.toFixed(2);
-              document.getElementById("repvotedparty").innerHTML = statistics.glance.pct_republicans_voted_with_party;
+              document.getElementById("repvotedparty").innerHTML = statistics.glance.pct_republicans_voted_with_party + " %";
               break;
+          case "I":
+                statistics.glance.pct_independents_voted_with_party = media.toFixed(2);
+                document.getElementById("indvotedparty").innerHTML = "0" + " %";
+                break;    
           case "Total":
               statistics.glance.pct_total_voted_with_party = media.toFixed(2);
-              document.getElementById("totalvotedparty").innerHTML = statistics.glance.pct_total_voted_with_party;
+              document.getElementById("totalvotedparty").innerHTML = statistics.glance.pct_total_voted_with_party + " %";
               break;
       }
   }

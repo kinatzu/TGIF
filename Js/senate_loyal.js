@@ -119,19 +119,19 @@ function calcVotes(targetArray, averageArray, partyValue) {
     switch (partyValue) {
         case "D":
             statistics.glance.pct_democrat_voted_with_party = media.toFixed(2);
-            document.getElementById("demvotedparty").innerHTML = statistics.glance.pct_democrat_voted_with_party;
+            document.getElementById("demvotedparty").innerHTML = statistics.glance.pct_democrat_voted_with_party + " %";
             break;
         case "R":
             statistics.glance.pct_republicans_voted_with_party = media.toFixed(2);
-            document.getElementById("repvotedparty").innerHTML = statistics.glance.pct_republicans_voted_with_party;
+            document.getElementById("repvotedparty").innerHTML = statistics.glance.pct_republicans_voted_with_party + " %";
             break;
         case "I":
             statistics.glance.pct_independents_voted_with_party = media.toFixed(2);
-            document.getElementById("indvotedparty").innerHTML = statistics.glance.pct_independents_voted_with_party;
+            document.getElementById("indvotedparty").innerHTML = statistics.glance.pct_independents_voted_with_party + " %";
             break;
         case "Total":
             statistics.glance.pct_total_voted_with_party = media.toFixed(2);
-            document.getElementById("totalvotedparty").innerHTML = statistics.glance.pct_total_voted_with_party;
+            document.getElementById("totalvotedparty").innerHTML = statistics.glance.pct_total_voted_with_party + " %";
             break;
     }
 }
@@ -156,7 +156,7 @@ function orderleastpartyVotes() {
             result += "<tr>" + "<td>" + '<a href="' + leastpartyvoteArray[i].url + '">' + leastpartyvoteArray[i].first_name + ' ' + leastpartyvoteArray[i].middle_name + ' ' + leastpartyvoteArray[i].last_name + "</a>" + "</td>";
         }
         result += "<td class='party'>" + (leastpartyvoteArray[i].total_votes - leastpartyvoteArray[i].missed_votes) + "</td>";
-        result += "<td class='state'>" + leastpartyvoteArray[i].votes_with_party_pct + "</td>" + "</tr>";
+        result += "<td class='state'>" + leastpartyvoteArray[i].votes_with_party_pct + " %" + "</td>" + "</tr>";
     }
     if ((window.location.pathname.includes("/senate_loyal.html")) || (window.location.pathname.includes("/house_loyal.html"))) {
         document.getElementById("leastpartyvote").innerHTML = result;
@@ -185,7 +185,7 @@ function ordermostpartyVotes() {
             result += "<tr>" + "<td>" + '<a href="' + mostpartyvoteArray[i].url + '">' + mostpartyvoteArray[i].first_name + ' ' + mostpartyvoteArray[i].middle_name + ' ' + mostpartyvoteArray[i].last_name + "</a>" + "</td>";
         }
         result += "<td class='party'>" + (mostpartyvoteArray[i].total_votes - mostpartyvoteArray[i].missed_votes) + "</td>";
-        result += "<td class='state'>" + mostpartyvoteArray[i].votes_with_party_pct + "</td>" + "</tr>";
+        result += "<td class='state'>" + mostpartyvoteArray[i].votes_with_party_pct + " %" + "</td>" + "</tr>";
     }
     if ((window.location.pathname.includes("/senate_loyal.html")) || (window.location.pathname.includes("/house_loyal.html"))) {
         document.getElementById("mostpartyvote").innerHTML = result;

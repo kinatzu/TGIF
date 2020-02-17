@@ -151,14 +151,6 @@ function showData(member) {
   return false;
 }
 
-//FUNCTION TO SHOW ALL STATES WHEN CLICK ON ''SELECT ALL''
-// function showState(members) {
-//   var dropdown = document.getElementById("filterstate").value;
-//   if (dropdown === members.state || dropdown === "All") {
-//     return true;
-//   }
-// }
-
 
 
 //FUNCTION TO PRINT STATES INITIALS (NY, DK, AR...)
@@ -185,3 +177,5 @@ function states() {
 // $(document).ready(function() {
 //   $('#example').DataTable();
 // } );
+
+
