@@ -56,7 +56,7 @@ td, tr{
 #loadingLogo{
     position: absolute;
     z-index: 100;
-    right: 480px;
+    right: 500px;
     top: 570px;
 }
 .whitehouse{
