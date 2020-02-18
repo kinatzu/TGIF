@@ -75,7 +75,7 @@ function createTable() {
     var seniority = members[i].seniority;
     var votesParty = members[i].votes_with_party_pct;
     //DIFERENT VARIABLES TO OBTAIN THE DIFFERENT ATTRIBUTES OF EVERY MEMBER
-    var insertCell = [link, party, state, seniority, votesParty];
+    var insertCell = [link, party, state, seniority, votesParty + "%"];
 
     if (showData(members[i])) {
       
