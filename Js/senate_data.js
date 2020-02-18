@@ -41,6 +41,20 @@ fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
 })
 .catch(function(error) {
   console.log("Request failed:" + error.message);
+  boxLoading.style.display = 'none';
+});
+
+
+
+//SEARCH BAR
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    boxLoading.style.display = 'none';
+    $("#senateData tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
 });
 
 // const members = json.results[0].members;

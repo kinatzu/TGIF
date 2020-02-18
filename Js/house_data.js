@@ -54,10 +54,12 @@ fetch("https://api.propublica.org/congress/v1/113/house/members.json", {
   //showState(members);
   states();
   querySelectors();
+  doSearch()
   boxLoading.style.display = 'none';
 })
 .catch(function(error) {
   console.log("Request failed:" + error.message);
+  boxLoading.style.display = 'none';
 });
 
 // const members = json.results[0].members;
@@ -66,7 +68,15 @@ fetch("https://api.propublica.org/congress/v1/113/house/members.json", {
 //createTable();
 //showState(members);
 //states();
-
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    boxLoading.style.display = 'none';
+    $("#houseData tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
 
 //START FUNCTION TO PRINT TABLES
 function createTable() {
